@@ -1,0 +1,451 @@
+/* ========================= ОСНОВА ========================= */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+    background-image: url('Картинки/всякая фигня/фон.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* ========================= КОНТЕЙНЕР КАРТОЧЕК — ПК ========================= */
+.cards {
+    position: relative;
+    width: 550px;
+    height: 720px;
+}
+
+/* ========================= ОБЩИЕ СТИЛИ КАРТОЧЕК ========================= */
+.card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 550px;
+    height: 720px;
+    background: #fffafa;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(120, 40, 60, 0.10);
+    transition: transform 0.7s ease, opacity 0.7s ease;
+}
+
+/* ========================= ПЕРВАЯ КАРТОЧКА ========================= */
+#greeting {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px;
+    box-shadow:
+        0 10px 18px rgba(237, 88, 117, 0.4);
+}
+
+.greeting-content {
+    width: 100%;
+    max-width: 450px;
+}
+
+/* Маленькая надпись */
+.small-title {
+    margin: 0 0 18px;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    letter-spacing: 4px;
+    color: #a66a78;
+    text-transform: uppercase;
+}
+
+/* Заголовок */
+.greeting h1 {
+    margin: 0;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 48px;
+    line-height: 0.95;
+    color: #72263d;
+    text-align: center;
+}
+
+/* Подзаголовок */
+.subtitle {
+    margin: 25px 0 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    line-height: 1.5;
+    color: #8c606b;
+    text-align: center;
+}
+
+/* ========================= ПЕРЕХОД МЕЖДУ КАРТОЧКАМИ ========================= */
+.greeting {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.playlist {
+    transform: translateX(100%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.showPlaylist .greeting {
+    transform: translateX(-100%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.showPlaylist .playlist {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* ========================= PLAYLIST ========================= */
+#playlist {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+    box-shadow:
+        0 8px 18px rgba(237, 88, 117, 0.4);
+
+
+}
+
+/* Фото */
+#memory_Image {
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* Аудио */
+#memory_Song {
+    display: none;
+    max-width: 500px;
+}
+
+/* Название и автор */
+#memory_Title,
+#memory_Author {
+    font-family: Georgia, 'Times New Roman', serif;
+}
+
+#memory_Title {
+    margin: 15px 0 3px;
+    font-size: 24px;
+    color: #af324b;
+    font-weight: bold;
+}
+
+#memory_Author {
+    margin: 0;
+    font-size: 14px;
+}
+
+/* ========================= ПРОГРЕСС ========================= */
+.progress-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin-top: 15px;
+}
+
+#progress {
+    width: 100%;
+    appearance: none;
+    height: 5px;
+    border-radius: 10px;
+    background: #999;
+    cursor: pointer;
+}
+
+#progress::-webkit-slider-thumb {
+    appearance: none;
+    width: 0;
+    height: 0;
+}
+
+#progressHeart {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+/* ========================= КНОПКИ МУЗЫКИ ========================= */
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 15px;
+}
+
+.buttons button {
+    padding: 0;
+    background: none;
+    border: none;
+}
+
+.buttons button img {
+    width: 70px;
+    max-width: 100%;
+    cursor: pointer;
+}
+
+/* ========================= КНОПКА "ПРОСМОТРЕТЬ" ========================= */
+#openPlaylist {
+    margin-top: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 11px 20px;
+    border: none;
+    border-radius: 25px;
+    background: #ed5875;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+    box-shadow: 0 5px 12px rgba(237, 88, 117, 0.35);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#openPlaylist:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(237, 88, 117, 0.4);
+}
+
+#openPlaylist:active {
+    transform: translateY(0);
+}
+
+#openPlaylist img {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+}
+
+/* ========================= КНОПКА "НАЗАД" ========================= */
+#openGreeting {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 11px 15px;
+    border: none;
+    border-radius: 25px;
+    background: #ed5875;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#openGreeting:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(237, 88, 117, 0.4);
+}
+
+#openGreeting:active {
+    transform: translateY(0);
+}
+
+#openGreeting img {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+}
+
+/* ========================= МОБИЛЬНАЯ ВЕРСИЯ ========================= */
+@media (max-width: 600px) {
+    body {
+        width: 100%;
+        min-height: 100vh;
+        padding: 0;
+        overflow: hidden;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+    }
+
+    /* Контейнер */
+    .cards {
+        position: relative;
+        width: 100vw;
+        height: 90vh;
+        margin: 0;
+    }
+
+    /* ========================= МОБИЛЬНЫЕ КАРТОЧКИ ========================= */
+    #greeting,
+    #playlist {
+        position: absolute;
+        top: 60px;
+        left: 25px;
+        right: 25px;
+        bottom: 100px;
+        width: auto;
+        height: auto;
+        padding: 5px 5px;
+        border-radius: 18px;
+    }
+
+    /* ========================= АНИМАЦИЯ ========================= */
+    .greeting {
+        transform: translateX(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .playlist {
+        transform: translateX(100%);
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .showPlaylist .greeting {
+        transform: translateX(-100%);
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .showPlaylist .playlist {
+        transform: translateX(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    /* ========================= GREETING — ТЕЛЕФОН ========================= */
+    #greeting {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .greeting-content {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .small-title {
+        margin-bottom: 18px;
+        font-size: 9px;
+        letter-spacing: 2.5px;
+        text-align: center;
+    }
+
+    .greeting h1 {
+        font-size: 40px;
+        line-height: 1;
+        text-align: center;
+    }
+
+    .subtitle {
+        margin: 20px 0 0;
+        font-size: 15px;
+        text-align: center;
+    }
+
+    #openPlaylist {
+        margin-top: 20px;
+        padding: 10px 18px;
+        font-size: 13px;
+    }
+
+    /* ========================= PLAYLIST — ТЕЛЕФОН ========================= */
+    #playlist {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 30px 20px;
+    }
+
+    /* Фото */
+    #memory_Image {
+        width: 100%;
+        max-width: 100%;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        border-radius: 12px;
+    }
+
+    /* Название */
+    #memory_Title {
+        margin: 15px 0 3px;
+        font-size: 22px;
+    }
+
+    #memory_Author {
+        margin: 0;
+        font-size: 13px;
+    }
+
+    /* ========================= ПРОГРЕСС — ТЕЛЕФОН ========================= */
+    .progress-container {
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    #progress {
+        width: 100%;
+    }
+
+    #progressHeart {
+        width: 22px;
+        height: 22px;
+    }
+
+    /* ========================= КНОПКИ — ТЕЛЕФОН ========================= */
+    .buttons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        margin-top: 10px;
+    }
+
+    .buttons button img {
+        width: 55px;
+    }
+
+    /* ========================= НАЗАД — ТЕЛЕФОН ========================= */
+    #openGreeting {
+        position: static;
+        align-self: flex-start;
+        margin-top: 15px;
+        padding: 10px 16px;
+        text-align: left;
+    }
+
+    #openGreeting img {
+        width: 14px;
+        height: 14px;
+    }
+}
