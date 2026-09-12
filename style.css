@@ -295,6 +295,7 @@ body {
         width: 100%;
         max-width: 400px;
         margin: 0 auto;
+        transform: translateY(5vh);
     }
 
     /* ========================= МОБИЛЬНЫЕ КАРТОЧКИ ========================= */
