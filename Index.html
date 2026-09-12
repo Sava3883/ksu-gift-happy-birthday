@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>С днем рождения, любимая</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="Картинки/всякая фигня/иконка.png">
+</head>
+
+<body>
+
+    <div class="cards">
+        <div class="card greeting" id="greeting">
+
+            <div class="greeting-content">
+
+                <p class="small-title">Маленький подарочек</p>
+
+                <h1>
+                    Для любимой<br>
+                    Ксюши❤️
+                </h1>
+
+                <p class="subtitle">
+                    С днем рождения!
+                </p>
+
+                <button id="openPlaylist">
+                    <span>Просмотреть</span>
+                    <img src="Картинки/всякая фигня/переключение.png">
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="card playlist" id="playlist">
+            <img id="memory_Image">
+            <p id="memory_Title"></p>
+            <p id="memory_Author"></p>
+
+            <div class="progress-container">
+                <input type="range" id="progress" min="0" value="0">
+                <img id="progressHeart" src="Картинки/всякая фигня/сердце.png">
+            </div>
+
+            <div class="buttons">
+                <button id="previousButton" onclick="previousMusic()"><img class="buttonImage"
+                        src="Картинки/всякая фигня/previous.png"></button>
+                <button id="playButton" onclick="PlayPauseMusic()"><img class="buttonImage" id="PlayPause"
+                        src="Картинки/всякая фигня/плей.png"></button>
+                <button id="nextButton" onclick="nextMusic()"><img class="buttonImage"
+                        src="Картинки/всякая фигня/next.png"></button>
+            </div>
+
+            <audio id="memory_Song"></audio>
+            <button id="openGreeting">
+                <span>Вернуться назад</span>
+                <img id="nextCard" src="Картинки/всякая фигня/переключение обратно.png ">
+            </button>
+        </div>
+    </div>
+</body>
+<script src="script.js"></script>
+
+</html>
